@@ -1,5 +1,3 @@
-import { oneFunc } from './src/modules/one'
-import { twoFunc } from './src/modules/two'
+import { timer } from './src/modules/timer'
 
-oneFunc()
-twoFunc()
+timer('25 october 2024')
