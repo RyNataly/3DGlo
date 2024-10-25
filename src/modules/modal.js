@@ -3,13 +3,14 @@ export const modal = () => {
     const buttons = document.querySelectorAll('.popup-btn')
     const closeBtn = modal.querySelector('.popup-close')
     const modalBlock = modal.querySelector('.popup-content')
+    const width = document.documentElement.clientWidth
     const height = document.documentElement.clientHeight * 0.1
-    let topBlock = height * 10 
+    let topBlock = height * 20 
     let idInterval
 
     const animate = () => {
         idInterval = requestAnimationFrame(animate)
-        topBlock = topBlock - 10
+        topBlock = topBlock - 20
        
         if (modalBlock.offsetTop > height) {
             modalBlock.style.top = topBlock + 'px'
@@ -21,8 +22,14 @@ export const modal = () => {
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             modal.style.display = 'block'
-            modalBlock.style.top = topBlock + 'px'
-            animate()   
+            const width = document.documentElement.clientWidth
+            if (width > 768) {
+                topBlock = height * 10
+                modalBlock.style.top = topBlock + 'px'
+                animate()
+            } else {
+                modalBlock.style.top = height
+            }
         })
     })
 
