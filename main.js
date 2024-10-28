@@ -1,9 +1,11 @@
 import { timer } from './src/modules/timer'
 import { menu } from './src/modules/menu'
 import { modal } from './src/modules/modal'
-import { check_form } from './src/modules/check_form'
+import { check_Form } from './src/modules/check_form'
+import { tabs } from './src/modules/tabs'
 
 timer('26 october 2024')
 menu()
 modal()
-check_form()
+check_Form()
+tabs()
