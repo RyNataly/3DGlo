@@ -86,18 +86,14 @@ export const slider = () => {
     })
 
     sliderBlock.addEventListener('mouseenter', (e) => {
-        console.log(e.target);
         if (e.target.matches('.dot, .portfolio-btn')) {
             stopSlide()
-            console.log(e.target);
         }
     }, true)
 
     sliderBlock.addEventListener('mouseleave', (e) => {
-        console.log(e.target);
         if (e.target.matches('.dot, .portfolio-btn')) {
             startSlide(timeInterval)
-            console.log(e.target);
         }
     }, true)
 
