@@ -1,3 +1,3 @@
 export const twoFunc = () => {
-  console.log('two.js');
+  // console.log('two.js');
 }

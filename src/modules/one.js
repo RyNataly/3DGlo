@@ -1,3 +1,3 @@
 export const oneFunc = () => {
-  console.log('one.js');
+  // console.log('one.js');
 }
