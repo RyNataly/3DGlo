@@ -14,21 +14,21 @@ export const check_Form = () => {
         const inputTel = form.querySelector('input[type=tel]')
         let isError = false
 
-        if (!/[^а-яА-Я\s\-]/g.test(inputText.value)){
-            console.log(inputText.value)
+        if (!/[^а-яА-Я\s]/g.test(inputText.value)){
+            //console.log(inputText.value)
         } else {
             isError = true
-            alert('Ошибка  при вводе текстовых данных. Допустимы только буквы кириллицы в любом регистре, символы дефиса и пробела')
+            alert('Ошибка  при вводе текстовых данных. Допустимы только буквы кириллицы в любом регистре и пробелов')
         }
 
-        if (!/[^a-zA-Z\@\w\!\~\*\'\-]/g.test(inputEmail.value)){
+        if (!/[^a-zA-Z\@\w\!\~\*\'\-.]/g.test(inputEmail.value)){
             // console.log(inputEmail.value)
         } else {
             isError = true
             alert('Ошибка в email адреса')
         }
 
-        if (!/[^\d\(\)\-]/g.test(inputTel.value)){ 
+        if (!/[^\d\(\)\-\+]/g.test(inputTel.value)){ 
 
         } else {
             isError = true
@@ -36,12 +36,12 @@ export const check_Form = () => {
         }
 
         if (e.target.length === 5){
-            // const inputMess = form.querySelector('input[class=mess]') 
-            if (!/[^а-яА-Я\s\-]/g.test(inputMess.value)) { 
-                // console.log(inputMess.value)
+            const inputMess = form.querySelector('input[class=mess]') 
+            if (!/[^а-яА-Я\s\d\-.,;:!?]/g.test(inputMess.value)) { 
+                 console.log(inputMess.value)
             } else {
                 isError = true
-                alert('Ошибка  при вводе текстовых данных. Допустимы только буквы кириллицы в любом регистре, символы дефиса и пробелах')
+                alert('Ошибка  при вводе сообщения. Допустимы только буквы кириллицы в любом регистре, символы дефиса и пробелах')
             }      
         }
 
