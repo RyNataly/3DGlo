@@ -8,8 +8,11 @@ export const sendForm = ({ formId, someElem = [] }) => {
     const validate = (list) => {
       let success = true
       
-
-
+      list.forEach(input => {
+          if (!input.classList.contains('success')) {
+              success = false
+          }
+      })
       return success
     }
 
@@ -30,6 +33,7 @@ export const sendForm = ({ formId, someElem = [] }) => {
 
       statusBlock.textContent = loadText
       form.append(statusBlock)
+      statusBlock.style.color = '#fff'
 
       formData.forEach((val, key) => {
           formBody[key] = val
@@ -45,12 +49,11 @@ export const sendForm = ({ formId, someElem = [] }) => {
               }
           })
 
-      console.log('submit')
-
       if (validate(formElements)){
               sendData(formBody)
                   .then(data => {
                       statusBlock.textContent = successText
+                      setTimeout(() => statusBlock.remove(), 3000);
                       
                       formElements.forEach(input => {
                           input.value = ''
@@ -58,9 +61,10 @@ export const sendForm = ({ formId, someElem = [] }) => {
               })
               .catch(error => {
                   statusBlock.textContent = errorText
+                  setTimeout(() => statusBlock.remove(), 3000);
               })
       } else {
-              alert('Данные не валидны!!!')
+              statusBlock.textContent = 'Не все поля заполнены!!!'
       }
     }
 

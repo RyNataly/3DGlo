@@ -6,47 +6,64 @@ export const check_Form = () => {
               e.target.value = e.target.value.replace(/\D+/,'')
         })
     )
+
+    forms.forEach(form => {
+        const inputText = form.querySelector('input[type=text]')
+        inputText.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^а-яА-Я\s]/,'')
+            })
+
+        const inputEmail = form.querySelector('input[type=email]')
+        inputEmail.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^\w\d\-\.\@]/,'')
+            })
+
+        const inputTel = form.querySelector('input[type=tel]')
+        inputTel.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^\d\-\+\(\)]/,'')
+            })
+
+        const inputMess = form.querySelector('input[class=mess]') 
+        if (inputMess){
+            inputMess.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^а-яА-Я\s\d\\.,!?]/,'')
+            })    
+        }     
+    })
+
     
     forms.forEach(form => form.addEventListener('submit', (e) => {
         e.preventDefault()
         const inputText = form.querySelector('input[type=text]') 
         const inputEmail = form.querySelector('input[type=email]')
         const inputTel = form.querySelector('input[type=tel]')
-        let isError = false
 
-        if (!/[^а-яА-Я\s]/g.test(inputText.value)){
-            //console.log(inputText.value)
+        if (inputEmail.value){
+            inputEmail.classList.add("success");
         } else {
-            isError = true
-            alert('Ошибка  при вводе текстовых данных. Допустимы только буквы кириллицы в любом регистре и пробелов')
+            inputEmail.classList.remove("success");
         }
 
-        if (!/[^a-zA-Z\@\w\!\~\*\'\-.]/g.test(inputEmail.value)){
-            // console.log(inputEmail.value)
+        if (inputText.value){
+            inputText.classList.add("success");
         } else {
-            isError = true
-            alert('Ошибка в email адреса')
+            inputText.classList.remove("success");
         }
 
-        if (!/[^\d\(\)\-\+]/g.test(inputTel.value)){ 
-
+        if (inputTel.value){
+            inputTel.classList.add("success");
         } else {
-            isError = true
-            alert('Ошибка при вводе телефона. Допустимы только цифры, скобочки, тире')
+            inputTel.classList.remove("success");
         }
 
         if (e.target.length === 5){
             const inputMess = form.querySelector('input[class=mess]') 
-            if (!/[^а-яА-Я\s\d\-.,;:!?]/g.test(inputMess.value)) { 
-                 console.log(inputMess.value)
+            if (inputMess.value){
+                inputMess.classList.add("success");
             } else {
-                isError = true
-                alert('Ошибка  при вводе сообщения. Допустимы только буквы кириллицы в любом регистре, символы дефиса и пробелах')
-            }      
+                inputMess.classList.remove("success");
+            }  
         }
 
-        if (!isError){
-            alert('Данные отправлены')
-        }
     }))
 }

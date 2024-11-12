@@ -6,18 +6,7 @@ export const modal = () => {
     const modalBlock = modal.querySelector('.popup-content')
     const height = document.documentElement.clientHeight * 0.1
     let topBlock = height * 20 
-    let idInterval
 
-    // const animate = () => {
-    //     idInterval = requestAnimationFrame(animate)
-    //     topBlock = topBlock - 20
-       
-    //     if (modalBlock.offsetTop > height) {
-    //         modalBlock.style.top = topBlock + 'px'
-    //     } else {
-    //         cancelAnimationFrame(idInterval)
-    //     }
-    // }
     const animating = () => {
         animate({
             duration: 400,

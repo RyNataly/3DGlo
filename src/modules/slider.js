@@ -1,13 +1,12 @@
 export const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content')
     const slides = document.querySelectorAll('.portfolio-item')
-    const dots = [] //document.querySelectorAll('.dot')
+    const dots = []
     const portfolioDots = document.querySelector('.portfolio-dots')
     const timeInterval = 2000;
 
     let currentSlide = 0;
     let interval
-    let circles = []
 
     const prevSlide = (elems, index, strClass) => {
       elems[index].classList.remove(strClass)

@@ -45,7 +45,6 @@ export const calc = (price = 100) => {
 
         }
 
-        // total.textContent = Math.round(totalValue)
         animating(Math.round(totalValue))
     }
 
